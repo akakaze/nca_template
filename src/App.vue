@@ -1,32 +1,31 @@
 <template>
-  <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
-    <router-view />
-  </div>
+	<div id="app">
+		<b-navbar variant="light" class="border-bottom">
+			<b-navbar-brand to="/">
+				<img src="@/assets/icon.svg" alt="內政部役政署" width=32 height=32>
+				<span class="h4 ml-1 align-middle font-weight-bold">內政部役政署</span>
+			</b-navbar-brand>
+			<b-navbar-nav>
+				<b-nav-item to="/about" link-classes="text-primary">關於</b-nav-item>
+			</b-navbar-nav>
+		</b-navbar>
+		<div id="content">
+			<router-view></router-view>
+		</div>
+	</div>
 </template>
 
-<style>
-#app {
-  font-family: "Avenir", Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
+<style lang="scss">
+body{
+	min-height: 100vh;
 }
 
-#nav {
-  padding: 30px;
-}
+$content-height: calc(100vh - 60px);
 
-#nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
-
-#nav a.router-link-exact-active {
-  color: #42b983;
+#content {
+	min-height: $content-height;
+	max-height: $content-height;
+	height: $content-height;
+	overflow: auto;
 }
 </style>
