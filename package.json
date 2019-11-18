@@ -64,5 +64,6 @@
   "browserslist": [
     "> 1%",
     "last 2 versions"
-  ]
+  ],
+  "license": "CC-BY-NC-SA-4"
 }
