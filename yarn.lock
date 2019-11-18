@@ -9514,6 +9514,11 @@ vue-cli-plugin-electron-builder@^1.4.1:
     webpack-chain "^5.0.0"
     yargs "^14.0.0"
 
+vue-cli-plugin-scss-base@^0.2.2:
+  version "0.2.2"
+  resolved "https://registry.npm.taobao.org/vue-cli-plugin-scss-base/download/vue-cli-plugin-scss-base-0.2.2.tgz#5664660f4a69ee4871a6c3e10eef453e5443b4a0"
+  integrity sha1-VmRmD0pp7khxpsPhDu9FPlRDtKA=
+
 vue-eslint-parser@^5.0.0:
   version "5.0.0"
   resolved "https://registry.npm.taobao.org/vue-eslint-parser/download/vue-eslint-parser-5.0.0.tgz#00f4e4da94ec974b821a26ff0ed0f7a78402b8a1"
