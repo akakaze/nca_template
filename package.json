@@ -1,6 +1,12 @@
 {
   "name": "nca_template",
   "version": "0.1.0",
+  "author": {
+    "name": "Akakaze",
+    "email": "akakazebot@gmail.com",
+    "url": "https://github.com/akakaze"
+  },
+  "description": "NCA Template",
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",
