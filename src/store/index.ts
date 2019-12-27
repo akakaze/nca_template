@@ -1,31 +1,14 @@
 import Vue from "vue";
 import Vuex from "vuex";
-import { Module, VuexModule } from "vuex-module-decorators";
-import { app } from "electron";
+import Configure from "./modules/Configure";
 
 Vue.use(Vuex);
-// console.log(app);
 
-@Module
-export default class State extends VuexModule {
-	config = JSON.parse(window.localStorage.getItem(`${app.getName()}.config`) || '[]')
-}
+const store = new Vuex.Store({
+  strict: true,
+  modules: {
+    Configure
+  }
+});
 
-// export default new Vuex.Store({
-//   state: {
-//     config: JSON.parse(window.localStorage.getItem(`${app.getName()}.config`) || '[]'),
-//   },
-//   getters: {
-//     getConfig(key) {
-//       return state.config[key];
-//     }
-//   },
-//   mutations: {
-//     setConfig(state, key, value) {
-//     	state.config[key] = value;
-//     	window.localStorage.setItem(`${app.getName()}.config`, state.config);
-//     },
-//   },
-//   actions: {},
-//   modules: {}
-// });
+export default store;

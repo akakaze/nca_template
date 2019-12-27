@@ -14,3 +14,5 @@ new Vue({
   store,
   render: h => h(App)
 }).$mount("#app");
+
+process.env.NODE_CONFIG_DIR = __dirname + "/src/config/";
