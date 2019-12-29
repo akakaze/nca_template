@@ -22,15 +22,20 @@
 
 <script lang="ts">
 import Vue from "vue";
+import { mapState } from "vuex";
+import ElectronStore from "electron-store";
 
 export default Vue.extend({
-  data() {
-    return {
-      ttt: "a"
-    };
-  },
   created() {
-    console.log(this.$store.getters["Configure/isEmpty"]);
+    let config = new ElectronStore();
+    if (config.size === 0) {
+      config.store = {
+        test: "ttt"
+      };
+    } else {
+      console.log(config.path);
+      console.log(config.get("test"));
+    }
   }
 });
 </script>
