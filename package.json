@@ -42,6 +42,7 @@
     "eslint-plugin-prettier": "^3.1.2",
     "eslint-plugin-vue": "^5.0.0",
     "jquery": "^3.4.1",
+    "json-schema-typed": "^7.0.3",
     "node-sass": "^4.13.0",
     "prettier": "^1.18.2",
     "sass-loader": "^8.0.0",

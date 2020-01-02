@@ -12,6 +12,7 @@
       </b-navbar-brand>
       <b-navbar-nav>
         <b-nav-item to="/about" link-classes="text-primary">關於</b-nav-item>
+        <b-nav-item to="/config" link-classes="text-primary">設定</b-nav-item>
       </b-navbar-nav>
     </b-navbar>
     <div id="content">
