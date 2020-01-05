@@ -33,16 +33,20 @@ $cyan: #17a2b8 !default;
 @import "~bootswatch/dist/united/bootswatch";
 @import "~bootstrap-vue/dist/bootstrap-vue.css";
 ::-webkit-scrollbar {
-    width: 8px;
+  width: 8px;
 }
 
 ::-webkit-scrollbar-track {
-    -webkit-border-radius: 0px;
-    border-radius: 0px;
+  -webkit-border-radius: 0px;
+  border-radius: 0px;
 }
 
 ::-webkit-scrollbar-thumb {
-    -webkit-border-radius: 0px;
-    border-radius: 0px;
-    background: $light;
+  -webkit-border-radius: 0px;
+  border-radius: 0px;
+  background: $orange;
+}
+
+* {
+  outline: 0;
 }

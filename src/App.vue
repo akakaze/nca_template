@@ -11,8 +11,15 @@
         <span class="h4 ml-1 align-middle font-weight-bold">內政部役政署</span>
       </b-navbar-brand>
       <b-navbar-nav>
-        <b-nav-item to="/about" link-classes="text-primary">關於</b-nav-item>
-        <b-nav-item to="/config" link-classes="text-primary">設定</b-nav-item>
+        <b-nav-item to="/about" link-classes="text-primary">
+          <font-awesome-icon
+            :icon="['far', 'question-circle']"
+            class="mr-1"
+          />關於
+        </b-nav-item>
+        <b-nav-item to="/config" link-classes="text-primary">
+          <font-awesome-icon icon="cog" class="mr-1" />設定
+        </b-nav-item>
       </b-navbar-nav>
     </b-navbar>
     <div id="content">
@@ -23,20 +30,16 @@
 
 <script lang="ts">
 import Vue from "vue";
-import { mapState } from "vuex";
-import ElectronStore from "electron-store";
+import { library } from "@fortawesome/fontawesome-svg-core";
+import { faCog } from "@fortawesome/free-solid-svg-icons";
+import { faQuestionCircle } from "@fortawesome/free-regular-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
+
+library.add(faQuestionCircle, faCog);
 
 export default Vue.extend({
-  created() {
-    let config = new ElectronStore();
-    if (config.size === 0) {
-      config.store = {
-        test: "ttt"
-      };
-    } else {
-      console.log(config.path);
-      console.log(config.get("test"));
-    }
+  components: {
+    FontAwesomeIcon
   }
 });
 </script>

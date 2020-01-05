@@ -1,53 +1,55 @@
 <template>
-  <b-container>
-    <h2>設定</h2>
+  <b-container class="px-5 py-4">
+    <h2 class="">設定</h2>
     <b-form-group
       v-for="(item, index) in configItems"
       label-cols-sm="3"
       label-cols-lg="2"
       :key="index"
       :label="item.title"
-      :label-for="item.id"
+      :label-for="item.key"
       :description="item.description"
     >
       <b-form-select
         v-if="item.enum"
-        :id="item.id"
-        :value="getConfigValue(item.id)"
+        :id="item.key"
         :options="item.enum"
-        @change="updateConfig"
+        :value="getConfigValue(item.key)"
+        @change="updateConfig(item.key, $event)"
       />
       <b-checkbox-group
         v-else-if="item.type === 'array'"
-        :id="item.id"
+        :id="item.key"
         :options="item.items.enum"
-        @change="updateConfig"
+        :checked="getConfigValue(item.key)"
+        @change="updateConfig(item.key, $event)"
       />
       <b-checkbox
         v-else-if="item.type === 'boolean'"
-        :id="item.id"
-        :value="getConfigValue(item.id)"
-        @change="updateConfig"
+        switch
+        :id="item.key"
+        :checked="getConfigValue(item.key)"
+        @change="updateConfig(item.key, $event)"
       />
       <b-input
         v-else-if="item.type === 'string'"
         type="text"
-        :id="item.id"
-        :value="getConfigValue(item.id)"
-        :placeholder="item.default"
+        :id="item.key"
         :pattern="item.pattern"
-        @change="updateConfig"
+        :placeholder="item.default"
+        :value="getConfigValue(item.key)"
+        @change="updateConfig(item.key, $event.trim())"
       />
       <b-input
         v-else-if="item.type === 'number'"
         type="number"
         number
-        :id="item.id"
-        :value="getConfigValue(item.id)"
+        :id="item.key"
         :max="item.maximum"
         :min="item.minimum"
         :step="item.multipleOf"
-        @change="updateConfig"
+        :value="getConfigValue(item.key)"
+        @change="updateConfig(item.key, Number($event))"
       />
     </b-form-group>
   </b-container>
@@ -63,37 +65,22 @@ const config = new ElectronStore({ schema: schema.properties });
 export default Vue.extend({
   data() {
     return {
-      configStore: config
+      config: config
     };
   },
   computed: {
-    configItems() {
-      return Object.keys(schema.properties).map(key => {
-        return {
-          id: key,
-          ...schema.properties[key]
-        };
-      });
-    }
-  },
-  created() {
-    console.log(this.configStore.path);
-    console.log(schema);
+    configItems: () =>
+      Object.keys(schema.properties).map(key => ({
+        key,
+        ...schema.properties[key]
+      }))
   },
   methods: {
     getConfigValue(key: string | number) {
-      return this.configStore.get(key);
+      return this.config.get(key);
     },
-    getCheckboxGroupEnum(options: any[]) {
-      return options.map(v => {
-        return {
-          text: v,
-          value: v
-        };
-      });
-    },
-    updateConfig(t: any) {
-      console.log(t);
+    updateConfig(key: string | number, value: any) {
+      this.config.set(key, value);
     }
   }
 });

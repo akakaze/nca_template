@@ -24,7 +24,7 @@
       "title": "測試 Boolean",
       "description": "測試開關",
       "type": "boolean",
-      "default": false
+      "default": true
     },
     "testEnum": {
       "title": "測試 Enum",
