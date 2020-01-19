@@ -12,13 +12,12 @@
       </b-navbar-brand>
       <b-navbar-nav>
         <b-nav-item to="/about" link-classes="text-primary">
-          <font-awesome-icon
-            :icon="['far', 'question-circle']"
-            class="mr-1"
-          />關於
+          <information-outline/>
+          關於
         </b-nav-item>
         <b-nav-item to="/config" link-classes="text-primary">
-          <font-awesome-icon icon="cog" class="mr-1" />設定
+          <settings/>
+          設定
         </b-nav-item>
       </b-navbar-nav>
     </b-navbar>
@@ -30,16 +29,13 @@
 
 <script lang="ts">
 import Vue from "vue";
-import { library } from "@fortawesome/fontawesome-svg-core";
-import { faCog } from "@fortawesome/free-solid-svg-icons";
-import { faQuestionCircle } from "@fortawesome/free-regular-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
-
-library.add(faQuestionCircle, faCog);
+import InformationOutline from "vue-material-design-icons/InformationOutline.vue";
+import Settings from "vue-material-design-icons/Settings.vue";
 
 export default Vue.extend({
   components: {
-    FontAwesomeIcon
+    InformationOutline,
+    Settings
   }
 });
 </script>
@@ -56,5 +52,11 @@ $content-height: calc(100vh - 60px);
   max-height: $content-height;
   height: $content-height;
   overflow: auto;
+}
+
+.material-design-icon > .material-design-icon__svg {
+  height: 1.125rem;
+  width: 1.125rem;
+  vertical-align: text-bottom;
 }
 </style>
